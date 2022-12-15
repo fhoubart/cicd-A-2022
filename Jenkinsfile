@@ -25,7 +25,7 @@ pipeline {
             // failed, record the test results and archive the jar file.
             success {
                junit '**/target/surefire-reports/TEST-*.xml'
-               recordIssues(tools: [junitParser()])
+               recordIssues(tools: [mavenConsole(),java(),javaDoc()])
                recordIssues(tools: [checkStyle()])
                archiveArtifacts 'target/*.jar'
             }
